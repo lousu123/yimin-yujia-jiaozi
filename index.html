@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亿民渔家饺子馆 · 全案运营方案（含智能版收银系统）</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+       background:#F5F3EE;color:#1F2422;line-height:1.78;font-size:15px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:520px;margin:0 auto;background:#F5F3EE;min-height:100vh;}
+
+  .hero{background:linear-gradient(160deg,#0B1E24 0%,#12414C 55%,#1F6E6B 100%);
+        padding:36px 24px 30px;color:#fff;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-60px;bottom:-80px;width:240px;height:240px;
+        border-radius:50%;background:radial-gradient(circle,rgba(120,255,225,.22),transparent 70%);}
+  .hero .tag{display:inline-block;font-size:11px;letter-spacing:1px;color:#9BE8DA;
+        border:1px solid rgba(155,232,218,.4);padding:3px 10px;border-radius:20px;margin-bottom:14px;}
+  .hero h1{font-size:24px;font-weight:800;letter-spacing:.5px;line-height:1.45;}
+  .hero h1 em{font-style:normal;color:#B8F5E9;}
+  .hero p{font-size:13px;color:#93B8BA;margin-top:11px;line-height:1.72;}
+  .hero .kpi{display:flex;gap:9px;margin-top:18px;position:relative;z-index:2;}
+  .hero .kpi div{flex:1;background:rgba(255,255,255,.07);border-radius:10px;padding:9px 4px;text-align:center;border:1px solid rgba(255,255,255,.08);}
+  .hero .kpi b{display:block;font-size:17px;color:#B8F5E9;font-weight:800;}
+  .hero .kpi span{font-size:10px;color:#7FA5A6;}
+
+  .sec{padding:26px 20px 4px;}
+  .sec h2{font-size:17px;font-weight:800;letter-spacing:.4px;margin-bottom:14px;
+        display:flex;align-items:center;gap:8px;}
+  .sec h2 i{font-style:normal;font-size:15px;}
+  .card{background:#fff;border-radius:14px;padding:18px 16px;margin-bottom:14px;
+        box-shadow:0 1px 3px rgba(31,36,34,.06);border:1px solid rgba(31,36,34,.05);}
+  .card h3{font-size:14.5px;font-weight:800;margin-bottom:9px;color:#14201E;}
+  .card p{font-size:13.8px;color:#46504D;margin-bottom:9px;}
+  .card p:last-child{margin-bottom:0;}
+  .lead{background:linear-gradient(135deg,#12414C,#1F6E6B);color:#fff;border:none;}
+  .lead h3{color:#B8F5E9;font-size:15px;}
+  .lead p{color:#DCEFEC;font-size:14.2px;line-height:1.85;}
+  .lead strong{color:#EAFBF7;}
+
+  table{width:100%;border-collapse:collapse;font-size:12.8px;margin:4px 0 6px;}
+  th{background:#F0F5F4;color:#5B6B67;font-weight:700;text-align:left;padding:8px 7px;
+     border-bottom:1px solid #D9E5E2;font-size:12px;}
+  td{padding:8px 7px;border-bottom:1px solid #EDF2F1;color:#3A4442;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .hot{color:#C2410C;font-weight:800;}
+  .ok{color:#1B6E5F;font-weight:700;}
+  .self{background:#F3FAF8;}
+
+  .num{display:inline-flex;width:20px;height:20px;border-radius:6px;background:#1F6E6B;color:#fff;
+       font-size:11.5px;font-weight:800;align-items:center;justify-content:center;margin-right:7px;flex-shrink:0;}
+  .li{display:flex;gap:0;font-size:13.8px;color:#46504D;margin-bottom:10px;line-height:1.75;}
+  .li:last-child{margin-bottom:0;}
+  .li b{color:#14201E;}
+
+  .warn{background:#FDF6E6;border-left:3px solid #D0A03A;border-radius:0 10px 10px 0;
+        padding:13px 15px;font-size:13.4px;color:#7A5C18;margin-bottom:14px;line-height:1.78;}
+  .warn b{color:#8E660C;}
+  .danger{background:#FBEEE9;border-left:3px solid #B8503F;border-radius:0 10px 10px 0;
+        padding:13px 15px;font-size:13.4px;color:#7F2A20;margin-bottom:14px;line-height:1.78;}
+  .danger b{color:#8E1F0E;}
+
+  .kpis{display:flex;gap:8px;margin-bottom:14px;}
+  .kpis div{flex:1;background:#fff;border-radius:12px;padding:13px 8px;text-align:center;
+            border:1px solid rgba(31,36,34,.06);box-shadow:0 1px 2px rgba(31,36,34,.04);}
+  .kpis b{display:block;font-size:16px;font-weight:800;color:#1F6E6B;margin-bottom:2px;}
+  .kpis span{font-size:10.5px;color:#8A9490;line-height:1.4;display:block;}
+
+  .mapbox{background:#fff;border-radius:14px;padding:8px 6px 2px;margin-bottom:14px;
+          border:1px solid rgba(31,36,34,.05);box-shadow:0 1px 3px rgba(31,36,34,.06);}
+  .mapbox svg{width:100%;height:auto;display:block;}
+  .mapnote{font-size:12px;color:#8A9490;padding:0 12px 12px;line-height:1.6;}
+
+  .tl{position:relative;padding-left:22px;}
+  .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:#D9E5E2;}
+  .tl-item{position:relative;margin-bottom:14px;font-size:13.6px;color:#46504D;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{content:"";position:absolute;left:-21px;top:6px;width:10px;height:10px;
+                   border-radius:50%;background:#1F6E6B;border:2px solid #F5F3EE;}
+  .tl-item b{color:#14201E;display:block;margin-bottom:2px;}
+
+  .foot{padding:26px 20px 40px;text-align:center;}
+  .foot p{font-size:12px;color:#9AA39F;line-height:1.9;}
+  .foot b{color:#46504D;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="tag">天津 · 滨海新区塘沽 · 正康里片区</span>
+    <h1>亿民渔家饺子馆<br><em>全案运营方案</em></h1>
+    <p>小吃快餐 · 饺子｜营业中老店<br>点评 3.6 分 · 评价 2 条 · 待签约</p>
+    <div class="kpi">
+      <div><b>415m</b><span>距五中心医院</span></div>
+      <div><b>509m</b><span>最近强竞对</span></div>
+      <div><b>2</b><span>点评评价</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🎯</i>一、一页纸结论</h2>
+    <div class="card lead">
+      <h3>这家店的位置，决定它做的是"三类人的三顿饭"。</h3>
+      <p>西边 <strong>415 米是天津市第五中心医院</strong>，东边 1 公里是金街商业带，脚下是<strong>正康里一带的老居民区</strong>。这个位置不是商场中心，客流不是"逛街顺便吃饭"的人，而是<strong>陪护家属、老街坊、周边上班的人</strong>。</p>
+      <p>这意味着：<strong>你的生意靠"高频、快、稳、熟客"，不靠"一次惊艳"。</strong>而这种生意最怕的就是——点单慢、出错、老板自己记账算不清、回头客记不住。</p>
+      <p><strong>所以这份方案的主线是：用智能版收银系统把"点餐、结账、算账"这三件天天要做的事理顺，再用线上入口把医院和老居民的复购抓住。</strong>位置已经给了你客源，系统负责把客源变成流水。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🗺️</i>二、地理特征：西边医院，东边商业街，脚下是老居民区</h2>
+    <div class="mapbox">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="250" cy="250" r="167" fill="none" stroke="#D9E5E2" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="250" cy="250" r="84" fill="none" stroke="#D9E5E2" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="250" y="18" font-size="11" fill="#B7C2BF" text-anchor="middle">北</text>
+        <text x="250" y="492" font-size="11" fill="#B7C2BF" text-anchor="middle">南</text>
+        <text x="4" y="252" font-size="11" fill="#B7C2BF">西</text>
+        <text x="496" y="252" font-size="11" fill="#B7C2BF" text-anchor="end">东</text>
+        <text x="380" y="86" font-size="10" fill="#C6D0CD">1km</text>
+        <text x="330" y="172" font-size="10" fill="#C6D0CD">500m</text>
+
+        <circle cx="250" cy="250" r="10" fill="#1F6E6B"/>
+        <circle cx="250" cy="250" r="18" fill="none" stroke="#1F6E6B" stroke-width="1.4" opacity="0.35"/>
+        <text x="250" y="286" font-size="12.5" font-weight="700" fill="#155853" text-anchor="middle">亿民渔家饺子馆</text>
+
+        <circle cx="181" cy="250" r="7" fill="#2A6FA8"/>
+        <text x="176" y="240" font-size="10.5" font-weight="700" fill="#1B4E78" text-anchor="middle">第五中心医院 415m</text>
+
+        <circle cx="196" cy="196" r="7" fill="#C2410C"/>
+        <text x="190" y="187" font-size="10.5" font-weight="700" fill="#9A2F06" text-anchor="middle">红鸿顺 4.2·509m</text>
+
+        <circle cx="133" cy="250" r="6" fill="#6B7672"/>
+        <text x="128" y="268" font-size="10" fill="#3A4442" text-anchor="middle">东北饺子馆 703m</text>
+
+        <circle cx="279" cy="221" r="5" fill="#8A9490"/>
+        <text x="288" y="214" font-size="10" fill="#5B6B67">家和小馆 404m</text>
+
+        <circle cx="424" cy="250" r="6" fill="#6B7672"/>
+        <text x="418" y="240" font-size="10" fill="#3A4442" text-anchor="middle">金街商业带 1km</text>
+
+        <circle cx="480" cy="262" r="6" fill="#8A9490"/>
+        <text x="474" y="284" font-size="10" fill="#5B6B67" text-anchor="middle">学校大街 1.5km</text>
+      </svg>
+      <div class="mapnote">按 POI 经纬度实算直线距离 · 数据来源：海鸥 CRM</div>
+    </div>
+
+    <div class="card">
+      <h3>三个地理事实</h3>
+      <div class="li"><span class="num">1</span><div><b>正西 415 米是天津市第五中心医院。</b>参照物：瑞幸咖啡（五中心医院临街店）415 米西、周师傅津味菜馆（<b>医院路</b>店）436 米西。<b>"医院路"这条路名本身就说明医院就在那条街上。</b>这是一天到晚都有人流的客源地——早班医生、陪护家属、探视亲友、检查完出来吃饭的病人。</div></div>
+      <div class="li"><span class="num">2</span><div><b>正东 1—1.5 公里是金街和学校大街商业带。</b>金街（爷爷不泡茶 4.6 分/675 条/1.0km）、学校大街（尹炭长烤肉 4.7 分/1517 条/1.5km、塔斯汀 4.1 分/337 条/1.5km）。<b>那一带餐饮极度密集，但离你 1 公里以上，不是你的主战场</b>——除非你做外卖。</div></div>
+      <div class="li"><span class="num">3</span><div><b>脚下是老城区居民带。</b>门店所属片区是正康里，周边还有福建里、居仁街、远洋里、草场街这些老居民小区（从竞对的门店后缀能直接看出来）。<b>这一带的消费特征是：认熟、认价、认份量，不认营销。</b></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>👥</i>三、客群判断：三类人，三种吃法</h2>
+    <div class="card">
+      <table>
+        <tr><th>客群</th><th>什么时候来</th><th>要什么</th><th>最在意</th></tr>
+        <tr class="self"><td><b>医院陪护/探视</b><br><span style="font-size:11.5px;color:#8A9490;">西 415m</span></td><td>早 7—9 点、午 11—13 点、晚 17—19 点</td><td>快、能打包、能带走、份量够</td><td class="hot">等不起。出餐速度 &gt; 口味</td></tr>
+        <tr><td><b>周边老居民</b><br><span style="font-size:11.5px;color:#8A9490;">正康里/福建里/居仁街</span></td><td>午晚正餐、周末全家</td><td>家常、实惠、熟悉的味道</td><td>性价比、份量、老板认人</td></tr>
+        <tr><td><b>周边上班/办事</b><br><span style="font-size:11.5px;color:#8A9490;">1 公里内小商铺</span></td><td>工作日午市</td><td>一个人能吃饱、15—20 分钟解决</td><td>快、干净、不贵</td></tr>
+      </table>
+      <p style="margin-top:8px;"><b>这三类人的共同点：都不为"体验"付钱，都为"效率"付钱。</b>所以这家店的核心竞争力不是装修和营销，是<b>出餐速度和点单不出错</b>——这恰好是收银系统能直接改善的地方。</p>
+    </div>
+
+    <div class="warn">
+      <b>一个反常识的判断：</b>这种店做"满减大促"往往无效。<b>真正决定回头率的是"第三次来的时候，老板还记得你常点什么"。</b>这件事靠人脑记不住，靠会员系统能记住——这也是后面系统部分要解决的核心问题。
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>📊</i>四、竞对拆解：饺子这个品类，本地谁在做</h2>
+    <div class="card">
+      <table>
+        <tr><th>门店</th><th>距离/方位</th><th>星级</th><th>评价</th><th>人均</th></tr>
+        <tr class="self"><td><b>亿民渔家饺子馆（本店）</b></td><td>—</td><td class="hot">3.6</td><td class="hot">2</td><td>未标</td></tr>
+        <tr><td>红鸿顺锅贴饺子楼（总店）</td><td class="hot">509m 西北</td><td>4.2</td><td>593</td><td>51</td></tr>
+        <tr><td>长福源饺子馆·老天津菜（总店）</td><td>1039m 西北</td><td>4.3</td><td>255</td><td>41</td></tr>
+        <tr><td>东北饺子馆（福建路店）</td><td>703m 西</td><td>3.8</td><td>83</td><td>33</td></tr>
+        <tr><td>老姨东伊顺饺子馆（福建里店）</td><td>794m 西北</td><td>3.7</td><td>9</td><td>36</td></tr>
+        <tr><td>悦尔缘饺子馆（居仁街店）</td><td>1050m 东</td><td>3.6</td><td>27</td><td>25</td></tr>
+        <tr><td>家和小馆饺子坊</td><td>404m 东北</td><td>3.5</td><td>4</td><td>9</td></tr>
+      </table>
+      <p style="margin-top:8px;">商圈内饺子类关键词命中 40 家，在营的评分集中在 <b>3.5—4.3</b>。<b>整个品类没有一家做到 4.5 分以上</b>——这跟砂锅的情况很像，是个"谁都做不精"的品类。</p>
+    </div>
+
+    <div class="card">
+      <h3>三个最该看清的对手</h3>
+      <div class="li"><span class="num">1</span><div><b>红鸿顺锅贴饺子楼（509m 西北 · 4.2 分 · 593 条 · 人均 51）。</b>它是这个片区饺子品类的头牌，而且卖的是"锅贴"——形态更重、更适合坐下来吃。<b>它证明了一件事：这个片区有人愿意为饺子花 51 元。</b>但它离你 500 米，抢的是同一批医院和居民客。</div></div>
+      <div class="li"><span class="num">2</span><div><b>家和小馆饺子坊（404m 东北 · 人均 9 元）。</b>人均 9 元，本质是低价外卖/档口。<b>它把"饺子＝便宜"这个认知做得更牢</b>——你如果跟着比价，会掉进这个坑。</div></div>
+      <div class="li"><span class="num">3</span><div><b>长福源（1039m · 4.3 分 · 255 条 · 41 元）。</b>它打的是"饺子+老天津菜"的组合，靠品类广度拿评分。<b>这是你可以参考的路：饺子店想活得好，不能只有饺子。</b></div></div>
+    </div>
+
+    <div class="card">
+      <h3>你手上有一个别人没有的牌：「渔家」</h3>
+      <p>天津塘沽靠海，<b>"渔家＝海鲜"是本地人一听就懂的信号</b>。而上面 6 家竞对，全部是"东北饺子""锅贴""老天津菜"这类内陆或综合路线，<b>没有一家把海鲜饺子当招牌</b>。</p>
+      <p><b>鲅鱼饺子、皮皮虾饺子、海肠饺子、虾仁三鲜</b>——这些在胶东和天津沿海是硬通货，但在你这个商圈是空位。<b>这是你唯一不需要跟人拼价格的差异化。</b>前提是：你现在的菜单里真的有海鲜馅，而且真的有货。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🩺</i>五、现状诊断：三件没做的事</h2>
+    <div class="kpis">
+      <div><b>3.6<small style="font-size:10px;">分</small></b><span>点评星级</span></div>
+      <div><b>2</b><span>累计评价</span></div>
+      <div><b>未上</b><span>SaaS 收银</span></div>
+    </div>
+
+    <div class="card">
+      <div class="li"><span class="num">1</span><div><b>线上几乎是空白。</b>3.6 分、2 条评价——顾客打开点评看到的是一个"没人说过好"的店。<b>2 条评价意味着一条差评就能把分数拉到 3.3</b>，这不是口碑管理问题，是基数问题。</div></div>
+      <div class="li"><span class="num">2</span><div><b>没有系统，等于每天都在"手工对账"。</b>点单靠喊、结账靠算、日结靠数钱、进货靠感觉。<b>老店最典型的三个流失点全在这里：高峰期漏单、抹零对不上、备料估不准。</b></div></div>
+      <div class="li"><span class="num">3</span><div><b>没有会员，熟客记不住。</b>你这个位置的核心资产就是"熟客复购"，但现在没有任何工具记录"谁来过几次、常点什么"。<b>等于每天都在从零开始做生意。</b></div></div>
+    </div>
+
+    <div class="danger">
+      <b>一句实话：</b>这家店的短板不在营销，在"基本功"。<b>先把点单、结账、算账、记客这四件事用系统跑顺，再谈推广和榜单。</b>顺序反了，推广带来的流量会被"出餐慢、算错账"直接消耗掉。
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🧾</i>六、智能版收银系统：解决这家店的六个具体问题</h2>
+
+    <div class="card lead">
+      <h3>不是"上一套系统"，是"把六个天天发生的麻烦逐个消掉"。</h3>
+      <p>饺子馆 + 医院客流 + 老居民，这三个条件叠在一起，系统的价值点非常具体：<strong>快、不出错、算得清、记得住人。</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>逐项对应</h3>
+      <table>
+        <tr><th>现在的问题</th><th>系统怎么解决</th><th>直接效果</th></tr>
+        <tr class="self"><td><b>高峰期顾客站着等点单</b></td><td><b>扫码点餐 / 桌码点单</b>：顾客坐下自己扫，后厨直接出单</td><td>午市翻台快，少配一个人</td></tr>
+        <tr><td><b>医院客要打包带走，排队等结账</b></td><td><b>自助点餐 + 自提叫号</b>：扫码下单、付款、等号取餐</td><td>打包单不占桌，不堵通道</td></tr>
+        <tr><td><b>饺子按份、按斤、加料，算错价</b></td><td><b>商品规格与加料管理</b>：份/斤/半份、加辣加醋一键选</td><td>不扯皮，收银员不用心算</td></tr>
+        <tr><td><b>每天不知道包多少馅，剩了浪费</b></td><td><b>菜品销量 + 时段报表</b>：哪款卖多少、几点卖最快</td><td>按数据备料，减少损耗</td></tr>
+        <tr class="self"><td><b>熟客来了不记得他常点什么</b></td><td><b>会员 + 储值 + 消费记录</b>：手机号一查，历史订单一目了然</td><td>回头客被"记住"，复购率上升</td></tr>
+        <tr><td><b>晚上数钱对不上，日结靠回忆</b></td><td><b>收银流水 + 日结报表 + 多支付方式对账</b></td><td>当天账当天清</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>再加三件对这家店特别有用的</h3>
+      <div class="li"><span class="num">1</span><div><b>聚合接单（外卖 + 团购核销一个屏）。</b>医院陪护点外卖的比例很高，多个平台订单在一个收银屏上接，不用来回切手机，不会漏单。</div></div>
+      <div class="li"><span class="num">2</span><div><b>沽清与售罄提示。</b>饺子馅是当天现包的，卖完就该停售。<b>系统里点"沽清"，线上和店里同时下架</b>，避免"点了没有"这种最伤评价的事。</div></div>
+      <div class="li"><span class="num">3</span><div><b>员工操作留痕。</b>谁改单、谁打折、谁退款都有记录。<b>小店最容易出的不是大额损失，是每天几十块的"说不清"。</b></div></div>
+    </div>
+
+    <div class="warn">
+      <b>上线要注意的三件事（经验）:</b>① 先跑通"点单—出单—结账"这条主链，别一上来开所有功能；② 菜单要重新录一遍，规格和加料一次性录对，否则后面天天改；③ 头三天必须有人陪店，<b>高峰期出问题最伤士气</b>。这三件我们会跟进。
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🍽️</i>七、产品与价格结构（配合系统落地）</h2>
+    <div class="card">
+      <h3>三档套餐，对应三类客群</h3>
+      <table>
+        <tr><th>套餐</th><th>给谁</th><th>建议价</th><th>作用</th></tr>
+        <tr class="self"><td><b>单人快食套餐</b><br>饺子 12 只 + 小菜 + 汤</td><td>医院陪护、上班族</td><td class="ok">19—25</td><td>扫码点单的第一入口，15 分钟吃完</td></tr>
+        <tr><td><b>双人/家庭套餐</b><br>两种馅 24 只 + 2 小菜 + 2 汤</td><td>老居民、家属</td><td class="ok">45—58</td><td>主力款，靠它拉客单</td></tr>
+        <tr><td><b>海鲜饺子尝鲜装</b><br>鲅鱼/虾仁/皮皮虾各 4 只</td><td>想尝鲜的、送礼带走</td><td class="ok">38—48</td><td>把"渔家"这张牌打出去</td></tr>
+      </table>
+      <p style="margin-top:8px;"><b>为什么套餐要放进系统里卖：</b>套餐在收银台和扫码页同时可见，顾客决策快、收银不用解释、后厨出单统一。<b>这是系统真正省时间的地方，不只是"记个账"。</b></p>
+    </div>
+
+    <div class="card">
+      <h3>线上入口怎么布</h3>
+      <div class="li"><span class="num">1</span><div><b>店名副标题</b>补上：<b>渔家海鲜饺子 · 现包现煮 · 医院路附近</b>，让搜"饺子""海鲜饺子""塘沽饺子"都能命中。</div></div>
+      <div class="li"><span class="num">2</span><div><b>团购上三档</b>（单人 / 双人 / 尝鲜装），价格与店内套餐一致，<b>不要店内一个价、线上一价</b>——这是差评高发点。</div></div>
+      <div class="li"><span class="num">3</span><div><b>外卖重点做医院方向</b>：打包盒要能装汤、不要让饺子粘一起。医院单最在意"送到还是热的、没洒"。<b>这一个细节决定医院客群的口碑。</b></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🚀</i>八、落地节奏：30 / 60 / 90 天</h2>
+    <div class="card">
+      <h3>前 30 天 · 把系统和基础跑通</h3>
+      <div class="tl">
+        <div class="tl-item"><b>第 1 周</b>门店调研、菜单梳理（规格/加料/套餐）、系统开通与菜单录入</div>
+        <div class="tl-item"><b>第 2 周</b>收银 + 扫码点单上线，员工培训（点单、改单、沽清、日结），跑通主链</div>
+        <div class="tl-item"><b>第 3 周</b>会员与储值开起来，桌码物料落地；团购三档上线</div>
+        <div class="tl-item"><b>第 4 周</b>第一次数据复盘：卖得最好的 5 个品、高峰时段、客单结构</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>31—60 天 · 把客群做深</h3>
+      <div class="tl">
+        <div class="tl-item"><b>评价基数工程</b>目标 20—30 条真实评价，把 3.6 拉到 4.2 以上</div>
+        <div class="tl-item"><b>医院场景专项</b>外卖包装优化、午市打包专窗、陪护人群的复购券</div>
+        <div class="tl-item"><b>海鲜饺子主推</b>把"渔家"这张牌做成门店第一记忆点，首图、招牌、话术全换</div>
+        <div class="tl-item"><b>备料数据化</b>按销量报表定每天包馅量，先降损耗，再谈增长</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>61—90 天 · 把复购变成常态</h3>
+      <div class="tl">
+        <div class="tl-item"><b>会员复购机制</b>集点/储值/生日券，目标老客占比提升</div>
+        <div class="tl-item"><b>推广小额测试</b>星级 ≥4.2 且进店率达标再开，30—50 元/天起</div>
+        <div class="tl-item"><b>季度复盘</b>对照三个指标：评价数、复购率、日均单量</div>
+      </div>
+    </div>
+
+    <div class="warn">
+      <b>90 天的三个验收指标：</b>① 评价 ≥ 30 条、星级 ≥ 4.2；② 系统日结 100% 通过（不再手工对账）；③ 会员复购占比 ≥ 20%。<b>三条做到两条算成功。</b>做不到，说明是产品或选址的硬约束，不是运营能解决的。
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🧾</i>九、我们能交付的 SOP 清单</h2>
+    <div class="card">
+      <h3>第一块 · 系统上线（前期）</h3>
+      <table>
+        <tr><th>项目</th><th>频次</th></tr>
+        <tr><td>门店调研与菜单梳理（规格、加料、套餐结构）</td><td>合作后 1 次</td></tr>
+        <tr><td>收银系统开通、菜单录入、桌码生成</td><td>1 次</td></tr>
+        <tr><td>员工培训（点单、改单、沽清、日结、会员）</td><td>1—2 次，上线首周陪跑</td></tr>
+        <tr><td>会员与储值方案配置</td><td>1 次</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>第二块 · 线上经营（持续）</h3>
+      <table>
+        <tr><th>项目</th><th>频次</th></tr>
+        <tr><td>团购套餐设计与调价</td><td>每月 ≥1 次</td></tr>
+        <tr><td>评价监控、回复、差评申诉</td><td>每日</td></tr>
+        <tr><td>外卖页面与打包体验优化</td><td>每月 1 次</td></tr>
+        <tr><td>关键词与门店信息维护</td><td>每月 1 次</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>第三块 · 数据与复盘</h3>
+      <table>
+        <tr><th>项目</th><th>频次</th></tr>
+        <tr><td>菜品销量与时段分析（含备料建议）</td><td>每周 1 次</td></tr>
+        <tr><td>客单结构与毛利结构复盘</td><td>每月 1 次</td></tr>
+        <tr><td>推广效果复盘（开了才做）</td><td>每周 1 次</td></tr>
+        <tr><td>月度经营报告</td><td>每月 1 次</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>第四块 · 交付物</h3>
+      <table>
+        <tr><th>交付物</th><th>频次</th></tr>
+        <tr><td>门店诊断报告（位置、客群、竞对）</td><td>合作后 1 次</td></tr>
+        <tr><td>菜单与套餐结构方案</td><td>1 次，之后按月优化</td></tr>
+        <tr><td>经营周报 / 月报</td><td>每周 / 每月</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>💰</i>十、报价与回本测算</h2>
+    <div class="card">
+      <table>
+        <tr><th>方案</th><th>周期</th><th>价格</th><th>折月</th><th>折日</th></tr>
+        <tr><td>标准价</td><td>三个月一期</td><td>12000 元</td><td>4000 元</td><td>133 元</td></tr>
+        <tr class="self"><td><b>本次特惠</b></td><td>三个月一期</td><td class="hot"><b>8000 元</b></td><td>2667 元</td><td>89 元</td></tr>
+      </table>
+      <p style="margin-top:8px;">按快餐综合毛利 60% 测算：日成本 89 元 ÷ 60% ≈ <b>每天多做 148 元流水</b>即可回本。<b>按饺子馆人均 20 元算，相当于每天多 7—8 位客人</b>——也就是午市多卖七八份套餐。</p>
+      <p>对这个位置来说，这个量级不激进：<b>光是"扫码点单让午市少排 10 分钟队"，就能多接几桌。</b>系统带来的效率提升，本身就是增量。</p>
+    </div>
+    <div class="warn">
+      <b>不含项说清楚：</b>报价不含硬件（收银机、扫码枪、打印机按实际配置另算）、不含推广费（直接充进平台账户）、不含物料印刷。<b>三个月一期，不押年框。</b>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><i>🤝</i>十一、需要门店配合的四件事</h2>
+    <div class="card">
+      <div class="li"><span class="num">1</span><div><b>菜单一次录对。</b>规格（份/斤/半份）、加料、套餐组合，第一天就定死。后面天天改，员工就学不会。</div></div>
+      <div class="li"><span class="num">2</span><div><b>员工要用起来，不能只装不用。</b>扫码点单上线后，前两周必须有人引导顾客扫码，否则老顾客还是喊服务员。</div></div>
+      <div class="li"><span class="num">3</span><div><b>海鲜馅要有稳定的货。</b>"渔家"这张牌打出去就得天天有，断货比不卖更伤。做不到稳定供应，就别把它做成招牌。</div></div>
+      <div class="li"><span class="num">4</span><div><b>日结要当天清。</b>系统最大的价值是"账清楚"。如果还是晚上自己数钱对不上，系统就白装了。</div></div>
+    </div>
+    <div class="card lead">
+      <h3>一句话总结</h3>
+      <p>亿民渔家这个位置，<strong>西边是医院、脚下是老居民、东边是商业街</strong>，客源不缺，缺的是"把人接住的能力"。<strong>先用智能版收银把点单、结账、备料、记客这四件事跑顺，再用线上的三档套餐和评价把医院与老居民的复购接住。</strong>这家店不需要做网红，需要做成"这条街上最顺、最记人的那家"。</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <p><b>数据来源</b>：海鸥 CRM（门店信息、商圈门店数、竞对星级/评价数/人均、经纬度实算距离）<br>
+    数据时间：2026-11-24｜竞对为外滩/金街商圈内经关键词检索到的饺子类及周边地标门店</p>
+    <p style="margin-top:10px;">本方案为运营打法建议，星级、榜单、营业额均不作承诺</p>
+  </div>
+
+</div>
+</body>
+</html>
